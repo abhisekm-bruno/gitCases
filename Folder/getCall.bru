@@ -1,0 +1,43 @@
+meta {
+  name: getCall
+  type: http
+  seq: 1
+}
+
+get {
+  url: google.com/
+  body: none
+  auth: inherit
+}
+
+vars:pre-request {
+  : asbhi
+}
+
+script:post-response {
+  const rowData = [
+    { id: 1, name: "John", role: "Developer" },
+    { id: 2, name: "Smith", role: "Designer" },
+    { id: 3, name: "Harry", role: "Product Manager" }
+  ];
+  
+  const columnDefinitions = [
+    { field: "id", filter: true, floatingFilter: true },
+    { field: "name", filter: true, floatingFilter: true },
+    { field: "role", filter: true, floatingFilter: true }
+  ];
+  
+  bru.visualize('table', {
+    name: 'tableEmp',
+    provider: 'ag-grid',
+    props: {
+      rowData,
+      columnDefinitions
+    }
+  });
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

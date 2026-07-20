@@ -1,0 +1,24 @@
+meta {
+  name: Folder
+  seq: 10
+}
+
+auth {
+  mode: inherit
+}
+
+vars:pre-request {
+  browser: google
+}
+
+vars:post-response {
+  foo: bar
+}
+
+script:pre-request {
+  bru.setVar('web','google')
+}
+
+script:post-response {
+  bru.setVar('end','com')
+}

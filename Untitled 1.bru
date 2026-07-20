@@ -1,13 +1,19 @@
 meta {
   name: Untitled 1
   type: http
-  seq: 8
+  seq: 9
 }
 
 get {
-  url: comet.com
+  url: usebruno.comsa
   body: none
   auth: inherit
+}
+
+script:post-response {
+  const { validateSuccessResponse } = require('./sa.js');
+  
+  validateSuccessResponse(res);
 }
 
 settings {
